@@ -1,0 +1,8 @@
+/venv
+.idea
+/*/*pycache*
+*.pyc
+*.png
+*.xml
+*.woff
+*.txt
