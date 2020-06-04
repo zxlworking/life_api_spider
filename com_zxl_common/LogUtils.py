@@ -36,6 +36,17 @@ logger.addHandler(console_handler)
 logger.setLevel(logging.INFO)
 
 def i(msg):
-    time_now = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-    logger.info(time_now)
-    logger.info(msg)
+    time_now = time.strftime("%Y-%m-%d %H:%M:%S: ", time.localtime())
+    # logger.info(time_now)
+    if msg is None:
+        logger.info(time_now+"===msg none===")
+    else:
+        logger.info(time_now+str(msg))
+
+def e(msg):
+    time_now = time.strftime("%Y-%m-%d %H:%M:%S: ", time.localtime())
+    # logger.info(time_now)
+    if msg is None:
+        logger.info(time_now+"===msg none===", exc_info=True)
+    else:
+        logger.info(time_now+str(msg), exc_info=True)
