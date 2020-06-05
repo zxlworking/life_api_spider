@@ -13,5 +13,11 @@ if __name__ == "__main__":
     # request = QsbkDetailRequest()
     # # request.parse("https://www.qiushibaike.com/article/122197536")
     # request.parse("41", "https://www.qiushibaike.com/article/123175612")
-#     https://pic.qiushibaike.com/system/avtnew/3302/33028477/medium/20200501023523.jpg
-#     https://pic.qiushibaike.com/system/avtnew/2841/28413052/medium/201610032055070.JPEG
+
+    # str1 = 'https://pic.qiushibaike.com/system/pictures/12318/123183192/medium/article/image/CEIKU4T1IY6SPYO1'
+    # str2 = 'https://pic.qiushibaike.com/article/image/CEIKU4T1IY6SPYO1'
+    #
+    # if 'medium/article' in str1:
+    #     pattern = re.compile('system/pictures/\\d+/\\d+/medium/')
+    #     str1 = pattern.sub('', str1)
+    #     print(str1)

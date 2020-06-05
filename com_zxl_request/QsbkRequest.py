@@ -63,6 +63,10 @@ class QsbkTxtRequest(BaseRequest):
                 thumb_object = text_joke_item.find_element_by_xpath('.//div[@class="thumb"]')
                 thumb_img_object = thumb_object.find_element_by_xpath('.//img')
                 thumb_img_url = thumb_img_object.get_attribute('src')
+
+                if 'medium/article' in thumb_img_url:
+                    pattern = re.compile('system/pictures/\\d+/\\d+/medium/')
+                    thumb_img_url = pattern.sub('', thumb_img_url)
             except NoSuchElementException as e:
                 LogUtils.i(e.msg)
 
