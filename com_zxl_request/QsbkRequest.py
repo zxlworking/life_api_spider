@@ -152,6 +152,7 @@ class QsbkTxtRequest(BaseRequest):
     def start_task(self):
         LogUtils.i("start_task::" + 'Now Time::' + datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
         self.parse("text")
+        self.parse("imgrank")
         self.close_db()
 
 

@@ -3,7 +3,7 @@
 import re
 
 from com_zxl_request.QsbkDetailRequest import QsbkDetailRequest
-from com_zxl_request.QsbkTxtRequest import *
+from com_zxl_request.QsbkRequest import *
 
 if __name__ == "__main__":
     LogUtils.i("test_main"+"xxx")
