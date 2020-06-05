@@ -102,6 +102,13 @@ class QsbkTxtRequest(BaseRequest):
             LogUtils.i('======================================text_joke_item end==========================================')
             LogUtils.i('\n')
 
+            if 'women' in author_gender:
+                author_gender = '0'
+            elif 'man' in author_gender:
+                author_gender = '1'
+            else:
+                author_gender = '-1'
+
             joke_bean = JokeBean()
             joke_bean = joke_bean.create_joke_bean(
                 "",

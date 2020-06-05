@@ -165,6 +165,13 @@ class QsbkDetailRequest(BaseRequest):
                 LogUtils.i("parse_comment::comment_user_age = " + str(comment_user_age))
                 LogUtils.i("parse_comment::comment_user_content = " + comment_user_content)
 
+                if 'F' in comment_user_gender:
+                    comment_user_gender = '0'
+                elif 'M' in comment_user_gender:
+                    comment_user_gender = '1'
+                else:
+                    comment_user_gender = '-1'
+
                 jokeCommentBean = JokeCommentBean()
                 jokeCommentBean = jokeCommentBean.create_joke_comment_bean("",
                                                          joke_id,
