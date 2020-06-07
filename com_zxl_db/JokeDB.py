@@ -4,7 +4,7 @@ from com_zxl_data.JokeBean import JokeBean
 from com_zxl_db.BaseDB import BaseDB
 
 
-class JokeDB(BaseDB):
+class JokeDB:
 
     TABLE_NAME = 'joke'
 
@@ -67,6 +67,13 @@ class JokeDB(BaseDB):
                          + " FROM " + TABLE_NAME
                          + " WHERE " + COLUME_MD5 + " = '%s'")
 
+    def __init__(self):
+        global mDB
+        mDB = BaseDB()
+        mDB.create_table(self.CREATE_TABLE_SQL)
+        print("JokeDB::__init__")
+        print(mDB)
+
     def create_insert_data(self, joke_bean):
         return (
             joke_bean['author_nick_name'],
@@ -82,13 +89,16 @@ class JokeDB(BaseDB):
         )
 
     def insert_joke(self, joke_bean):
-        self.insert(self.INSERT_JOKE_SQL, self.create_insert_data(joke_bean))
+        mDB.insert(self.INSERT_JOKE_SQL, self.create_insert_data(joke_bean))
 
     def delete_joke(self):
-        self.delete(self.DELETE_JOKE_SQL)
+        mDB.delete(self.DELETE_JOKE_SQL)
+
+    def close_db(self):
+        mDB.close_db()
 
     def query_by_md5(self, md5):
-        cursor = self.query(self.QUERY_JOKE_BY_MD5 % (md5,))
+        cursor = mDB.query(self.QUERY_JOKE_BY_MD5 % (md5,))
 
         for (COLUME_ID,
              COLUME_AUTHOR_NICK_NAME,

@@ -4,7 +4,7 @@ from com_zxl_data.JokeCommentBean import JokeCommentBean
 from com_zxl_db.BaseDB import BaseDB
 
 
-class JokeCommentDB(BaseDB):
+class JokeCommentDB:
     TABLE_NAME = 'joke_comment'
 
     COLUME_ID = 'id'
@@ -64,6 +64,13 @@ class JokeCommentDB(BaseDB):
                                  + " FROM " + TABLE_NAME
                                  + " WHERE " + COLUME_ARTICLE_ID + " = '%s'")
 
+    def __init__(self):
+        global mDB
+        mDB = BaseDB()
+        mDB.create_table(self.CREATE_TABLE_SQL)
+        print("JokeCommentDB::__init__")
+        print(mDB)
+
     def create_insert_data(self, joke_comment_bean):
         return (
             joke_comment_bean['joke_id'],
@@ -78,16 +85,16 @@ class JokeCommentDB(BaseDB):
         )
 
     def insert_joke_comment(self, joke_comment_bean):
-        self.insert(self.INSERT_JOKE_SQL, self.create_insert_data(joke_comment_bean))
+        mDB.insert(self.INSERT_JOKE_SQL, self.create_insert_data(joke_comment_bean))
 
     def delete_joke_comment(self):
-        self.delete(self.DELETE_JOKE_SQL)
+        mDB.delete(self.DELETE_JOKE_SQL)
 
     def delete_joke_comment_by_joke_id(self, joke_id):
-        self.delete(self.DELETE_JOKE_SQL_BY_JOKE_ID % (joke_id,))
+        mDB.delete(self.DELETE_JOKE_SQL_BY_JOKE_ID % (joke_id,))
 
     def query_by_article_id(self, article_id):
-        cursor = self.query(self.QUERY_JOKE_BY_ARTICLE_ID % (article_id,))
+        cursor = mDB.query(self.QUERY_JOKE_BY_ARTICLE_ID % (article_id,))
 
         for (COLUME_ID,
              JOKE_ID,
