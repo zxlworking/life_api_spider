@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # coding=utf-8
+from com_zxl_common import LogUtils
 from com_zxl_data.JokeDetailBean import JokeDetailBean
 from com_zxl_db.BaseDB import BaseDB
 
@@ -47,8 +48,8 @@ class JokeDetailErrorDB:
         global mDB
         mDB = BaseDB()
         mDB.create_table(self.CREATE_TABLE_SQL)
-        print("JokeDetailErrorDB::__init__")
-        print(mDB)
+        LogUtils.i("JokeDetailErrorDB::__init__")
+        LogUtils.i(mDB)
 
     def create_insert_data(self, joke_detail_bean):
         return (

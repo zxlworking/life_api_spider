@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # coding=utf-8
+from com_zxl_common import LogUtils
 from com_zxl_data.JokeBean import JokeBean
 from com_zxl_db.BaseDB import BaseDB
 
@@ -71,8 +72,8 @@ class JokeDB:
         global mDB
         mDB = BaseDB()
         mDB.create_table(self.CREATE_TABLE_SQL)
-        print("JokeDB::__init__")
-        print(mDB)
+        LogUtils.i("JokeDB::__init__")
+        LogUtils.i(mDB)
 
     def create_insert_data(self, joke_bean):
         return (
@@ -89,23 +90,23 @@ class JokeDB:
         )
 
     def insert_joke(self, joke_bean):
-        print("JokeDB::insert_joke")
-        print(mDB)
+        LogUtils.i("JokeDB::insert_joke")
+        LogUtils.i(mDB)
         mDB.insert(self.INSERT_JOKE_SQL, self.create_insert_data(joke_bean))
 
     def delete_joke(self):
-        print("JokeDB::delete_joke")
-        print(mDB)
+        LogUtils.i("JokeDB::delete_joke")
+        LogUtils.i(mDB)
         mDB.delete(self.DELETE_JOKE_SQL)
 
     def close_db(self):
-        print("JokeDB::close_db")
-        print(mDB)
+        LogUtils.i("JokeDB::close_db")
+        LogUtils.i(mDB)
         mDB.close_db()
 
     def query_by_md5(self, md5):
-        print("JokeDB::query_by_md5")
-        print(mDB)
+        LogUtils.i("JokeDB::query_by_md5")
+        LogUtils.i(mDB)
         cursor = mDB.query(self.QUERY_JOKE_BY_MD5 % (md5,))
 
         for (COLUME_ID,

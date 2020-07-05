@@ -70,7 +70,7 @@ class BaseDB:
                 LogUtils.i(err.msg)
                 exit(1)
         else:
-            print("OK")
+            LogUtils.i("OK")
 
     def query(self, sql_str):
         # LogUtils.i("query::", sql_str)
