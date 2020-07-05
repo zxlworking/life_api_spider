@@ -89,15 +89,23 @@ class JokeDB:
         )
 
     def insert_joke(self, joke_bean):
+        print("JokeDB::insert_joke")
+        print(mDB)
         mDB.insert(self.INSERT_JOKE_SQL, self.create_insert_data(joke_bean))
 
     def delete_joke(self):
+        print("JokeDB::delete_joke")
+        print(mDB)
         mDB.delete(self.DELETE_JOKE_SQL)
 
     def close_db(self):
+        print("JokeDB::close_db")
+        print(mDB)
         mDB.close_db()
 
     def query_by_md5(self, md5):
+        print("JokeDB::query_by_md5")
+        print(mDB)
         cursor = mDB.query(self.QUERY_JOKE_BY_MD5 % (md5,))
 
         for (COLUME_ID,
