@@ -53,7 +53,7 @@ class JokeDetailErrorDB:
 
     def create_insert_data(self, joke_detail_bean):
         return (
-            joke_detail_bean['hot_pic_id'],
+            joke_detail_bean['joke_id'],
             joke_detail_bean['article_id'],
         )
 
